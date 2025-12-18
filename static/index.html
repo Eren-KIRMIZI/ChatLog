@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kurum İçi Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Login Ekranı -->
+<div id="login-screen" class="login-container">
+    <h2>🔐 Giriş Yap</h2>
+    <input type="text" id="login-username" placeholder="Kullanıcı Adı">
+    <input type="password" id="login-password" placeholder="Şifre">
+    <button onclick="login()">Giriş</button>
+    <p style="color: #999; margin-top: 15px; font-size: 13px;">
+        Hesabınız yok mu? 
+        <a href="#" onclick="showRegister(); return false;" style="color: #4caf50;">Kayıt Ol</a>
+    </p>
+    <div id="login-error" class="error-message"></div>
+</div>
+
+<!-- Kayıt Ekranı -->
+<div id="register-screen" class="login-container" style="display: none;">
+    <h2>📝 Kayıt Ol</h2>
+    <input type="text" id="register-username" placeholder="Kullanıcı Adı">
+    <input type="email" id="register-email" placeholder="E-posta">
+    <input type="password" id="register-password" placeholder="Şifre">
+    <button onclick="register()">Kayıt Ol</button>
+    <p style="color: #999; margin-top: 15px; font-size: 13px;">
+        Hesabınız var mı? 
+        <a href="#" onclick="showLogin(); return false;" style="color: #4caf50;">Giriş Yap</a>
+    </p>
+    <div id="register-error" class="error-message"></div>
+</div>
+
+<!-- Chat Ekranı -->
+<div id="chat-screen" class="app" style="display: none;">
+    <!-- Kanal Paneli -->
+    <div class="channels-panel">
+        <h3>📚 Kanallar</h3>
+        <ul id="channels"></ul>
+    </div>
+
+    <!-- Kullanıcı Paneli -->
+    <div class="users-panel">
+        <h3>👥 Online</h3>
+        <ul id="users"></ul>
+    </div>
+
+    <!-- Chat Alanı -->
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2 id="current-channel">Kurum İçi Chat</h2>
+            <div class="header-actions">
+                <span id="current-user" class="current-user"></span>
+                <span id="status" class="status">Bağlanıyor...</span>
+                <button onclick="logout()" class="logout-btn">Çıkış</button>
+            </div>
+        </div>
+
+        <div id="chat-box"></div>
+        
+        <!-- Typing Indicator -->
+        <div id="typing-indicator"></div>
+
+        <div class="input-area">
+            <input type="text" id="message" placeholder="Mesaj yaz..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Gönder</button>
+        </div>
+    </div>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>
